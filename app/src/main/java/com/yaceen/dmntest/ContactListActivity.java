@@ -1,8 +1,10 @@
 package com.yaceen.dmntest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,5 +31,13 @@ public class ContactListActivity extends AppCompatActivity {
         ArrayAdapter<Contact> contactAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, DataBase.contactList);
 
         listView.setAdapter(contactAdapter);
+
+        listView.setOnItemClickListener((parent, view,position, id) -> {
+
+            Intent detail = new Intent(ContactListActivity.this, DetailActivity.class);
+            detail.putExtra("position", position);
+            startActivity(detail);
+            Toast.makeText(this, String.valueOf(position) , Toast.LENGTH_LONG).show();
+        });
     }
 }
