@@ -31,12 +31,12 @@ public class MainActivity extends AppCompatActivity {
         Button login = findViewById(R.id.login);
 
         login.setOnClickListener( v -> {
-
+            /*
             DataBase.contactList.add(new Contact("test1", "0789654563232"));
             DataBase.contactList.add(new Contact("test2", "0789654563232"));
             DataBase.contactList.add(new Contact("test3", "0789654563232"));
             DataBase.contactList.add(new Contact("test4", "0789654563232"));
-
+            */
             EditText usernameEditText = findViewById(R.id.username);
             String username = usernameEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, ContactActivity.class);

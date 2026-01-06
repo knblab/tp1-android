@@ -1,6 +1,7 @@
 package com.yaceen.dmntest;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +41,11 @@ public class ContactFormActivity extends AppCompatActivity {
             // contact_list.add(name+" --> "+phonenum);
             Contact newContact = new Contact(name, phonenum);
             DataBase.contactList.add(newContact);
+
+            SQLiteDatabase db = DatabaseHelper.getInstance(this).getWritableDatabase();
+            db.execSQL("insert into contacts(nom, phone) values(?, ?)",new String[] {
+                    name, phonenum
+            });
             Toast.makeText(this,"Bien ajouter "+name,1).show();
 
             Intent intent3=new  Intent(ContactFormActivity.this,ContactActivity.class);
