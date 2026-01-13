@@ -12,19 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplicationDMN">
         <activity
-            android:name=".DetailActivity"
+            android:name=".ui.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ContactFormActivity"
+            android:name=".ui.ContactFormActivity"
             android:exported="false" />
         <activity
-            android:name=".ContactListActivity"
+            android:name=".ui.ContactListActivity"
             android:exported="false" />
         <activity
-            android:name=".ContactActivity"
+            android:name=".ui.ContactActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

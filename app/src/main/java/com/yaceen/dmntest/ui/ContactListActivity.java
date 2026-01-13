@@ -1,4 +1,4 @@
-package com.yaceen.dmntest;
+package com.yaceen.dmntest.ui;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,7 +14,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.yaceen.dmntest.model.Contact;
+import com.yaceen.dmntest.data.DataBase;
+import com.yaceen.dmntest.helpers.DatabaseHelper;
+import com.yaceen.dmntest.R;
+
 public class ContactListActivity extends AppCompatActivity {
+    ArrayAdapter<Contact> contactAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +38,11 @@ public class ContactListActivity extends AppCompatActivity {
 
         SQLiteDatabase db = DatabaseHelper.getInstance(this).getReadableDatabase();
 
-        Cursor mycursor = db.rawQuery("SELECT NOM, PHONE FROM contacts", null);
+        Cursor mycursor = db.rawQuery("SELECT nom, phone FROM contacts", null);
 
         if(mycursor != null) {
             try {
+                DataBase.contactList.clear();
                 while(mycursor.moveToNext()){
                     String nom = mycursor.getString(mycursor.getColumnIndexOrThrow("nom"));
                     String phone = mycursor.getString(mycursor.getColumnIndexOrThrow("phone"));
@@ -48,9 +55,10 @@ public class ContactListActivity extends AppCompatActivity {
         }
 
 
-        ArrayAdapter<Contact> contactAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, DataBase.contactList);
+        contactAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, DataBase.contactList);
 
         listView.setAdapter(contactAdapter);
+
 
         listView.setOnItemClickListener((parent, view,position, id) -> {
 
@@ -59,5 +67,12 @@ public class ContactListActivity extends AppCompatActivity {
             startActivity(detail);
             Toast.makeText(this, String.valueOf(position) , Toast.LENGTH_LONG).show();
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        contactAdapter.notifyDataSetChanged();
     }
 }

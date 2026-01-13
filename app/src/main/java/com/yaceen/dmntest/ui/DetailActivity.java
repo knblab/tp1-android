@@ -1,5 +1,6 @@
-package com.yaceen.dmntest;
+package com.yaceen.dmntest.ui;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.yaceen.dmntest.model.Contact;
+import com.yaceen.dmntest.data.DataBase;
+import com.yaceen.dmntest.R;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -37,10 +42,18 @@ public class DetailActivity extends AppCompatActivity {
 
         Button deleteItem = findViewById(R.id.btndelete);
         deleteItem.setOnClickListener( v -> {
-            DataBase.contactList.remove(position);
-            Intent back = new Intent(this, ContactListActivity.class);
-            startActivity(back);
-            finish();
+            new AlertDialog.Builder(this).setTitle("Title")
+                    .setMessage("azertyui")
+                    .setPositiveButton("Delete", (d,w) -> {
+                        // delete code here
+                        DataBase.contactList.remove(position);
+                        //Intent back = new Intent(this, ContactListActivity.class);
+                        //startActivity(back);
+                        finish();
+                    })
+                    .setNegativeButton("Cancel",null)
+                    .show();
+
         });
     }
 }

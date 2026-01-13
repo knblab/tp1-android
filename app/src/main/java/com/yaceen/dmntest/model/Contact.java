@@ -1,4 +1,4 @@
-package com.yaceen.dmntest;
+package com.yaceen.dmntest.model;
 
 public class Contact {
     private String name;

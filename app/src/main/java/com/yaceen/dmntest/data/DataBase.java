@@ -1,6 +1,6 @@
-package com.yaceen.dmntest;
+package com.yaceen.dmntest.data;
 
-import android.content.Context;
+import com.yaceen.dmntest.model.Contact;
 
 import java.util.ArrayList;
 

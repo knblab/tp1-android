@@ -9,7 +9,7 @@
     android:padding="20dp"
     android:layout_margin="20dp"
     android:background="#F0F000"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <EditText
         android:id="@+id/username"

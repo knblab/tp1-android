@@ -1,4 +1,4 @@
-package com.yaceen.dmntest;
+package com.yaceen.dmntest.ui;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,7 +13,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.ArrayList;
+import com.yaceen.dmntest.model.Contact;
+import com.yaceen.dmntest.data.DataBase;
+import com.yaceen.dmntest.helpers.DatabaseHelper;
+import com.yaceen.dmntest.R;
 
 public class ContactFormActivity extends AppCompatActivity {
 
